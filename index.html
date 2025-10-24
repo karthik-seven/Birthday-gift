@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Kanna 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #ffe6f2, #ff99cc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      color: #ff1493;
+      overflow: hidden;
+    }
+    h1 {font-size: 3em; margin-bottom: 0.3em;}
+    p {font-size: 1.5em; margin-top: 0;}
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0; left: 0;
+      z-index: -1;
+    }
+    .heart {
+      position: absolute;
+      color: #ff66b2;
+      animation: float 6s ease-in infinite;
+    }
+    @keyframes float {
+      0% {transform: translateY(100vh) scale(0.6); opacity: 1;}
+      100% {transform: translateY(-10vh) scale(1.2); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday, Kanna! 🎉</h1>
+  <p>As long as I exist, you will always be loved 💖</p>
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Background Music (YouTube Short) -->
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/LHhbrc-0Ayc?autoplay=1&loop=1&playlist=LHhbrc-0Ayc"
+    frameborder="0" allow="autoplay"></iframe>
+
+  <script>
+    const heartsContainer = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+      heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
