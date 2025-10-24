@@ -8,18 +8,39 @@
     body {
       margin: 0;
       height: 100vh;
-      background: radial-gradient(circle at center, #ffe6f2, #ff99cc);
+      background: radial-gradient(circle, #ffe6f2, #ffb3d9);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-family: "Poppins", sans-serif;
-      text-align: center;
       color: #ff1493;
+      text-align: center;
       overflow: hidden;
     }
-    h1 {font-size: 3em; margin-bottom: 0.3em;}
-    p {font-size: 1.5em; margin-top: 0;}
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.2em;
+      animation: fadeIn 2s ease;
+      text-shadow: 0 0 20px #ff66b2;
+    }
+
+    #timer {
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 20px #ff66b2, 0 0 40px #ff3399;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-top: 0.3em;
+    }
+
     .hearts {
       position: absolute;
       width: 100%;
@@ -28,40 +49,78 @@
       top: 0; left: 0;
       z-index: -1;
     }
+
     .heart {
       position: absolute;
       color: #ff66b2;
       animation: float 6s ease-in infinite;
     }
+
     @keyframes float {
       0% {transform: translateY(100vh) scale(0.6); opacity: 1;}
       100% {transform: translateY(-10vh) scale(1.2); opacity: 0;}
     }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes glow {
+      from {text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff1493;}
+      to {text-shadow: 0 0 25px #ff99cc, 0 0 50px #ff66b2;}
+    }
+
+    @keyframes sparkle {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
   </style>
 </head>
 <body>
-  <h1>🎉 Happy Birthday, Kanna! 🎉</h1>
+  <h1>🎉 Happy Birthday,Prajju ! 🎉</h1>
+  <div id="timer">⏳ Loading...</div>
   <p>As long as I exist, you will always be loved 💖</p>
   <div class="hearts" id="hearts"></div>
 
-  <!-- Background Music (YouTube Short) -->
+  <!-- YouTube Music -->
   <iframe width="0" height="0"
     src="https://www.youtube.com/embed/LHhbrc-0Ayc?autoplay=1&loop=1&playlist=LHhbrc-0Ayc"
     frameborder="0" allow="autoplay"></iframe>
 
   <script>
+    // Floating hearts
     const heartsContainer = document.getElementById('hearts');
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
-      heart.textContent = '💖';
+      heart.textContent = ['💖','💞','💕','💓'][Math.floor(Math.random()*4)];
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.fontSize = Math.random() * 30 + 20 + 'px';
       heart.style.animationDuration = Math.random() * 2 + 3 + 's';
       heartsContainer.appendChild(heart);
-      setTimeout(() => { heart.remove(); }, 5000);
+      setTimeout(() => heart.remove(), 5000);
     }
     setInterval(createHeart, 300);
+
+    // Countdown timer (edit your date here)
+    const countdownDate = new Date("Oct 25, 2025 00:00:00").getTime();
+    const timerElement = document.getElementById("timer");
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        timerElement.innerHTML = "🎂 It's your special day, Kanna! 🎂";
+        document.body.style.background = "linear-gradient(135deg, #ffb3d9, #ffe6f2)";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        timerElement.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
   </script>
 </body>
 </html>
