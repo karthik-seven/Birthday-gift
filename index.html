@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday prajju 🎂</title>
+  <title>Happy Birthday baby🎂</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle, #ffe6f2, #ffb3d9);
+      background: linear-gradient(135deg, #ffe6f2, #ffb3d9);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100vh;
       font-family: "Poppins", sans-serif;
       color: #ff1493;
       text-align: center;
@@ -21,24 +21,28 @@
 
     h1 {
       font-size: 2.8em;
-      margin-bottom: 0.2em;
-      animation: fadeIn 2s ease;
-      text-shadow: 0 0 20px #ff66b2;
+      margin-bottom: 0.3em;
+      animation: fadeIn 3s ease;
     }
 
     #timer {
-      font-size: 2em;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 20px #ff66b2, 0 0 40px #ff3399;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      animation: glow 2s ease-in-out infinite alternate;
+      font-size: 1.5em;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.3em;
-      margin-top: 0.3em;
+      margin-top: 0.5em;
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px #ff80bf;
+      margin-top: 15px;
+      animation: popIn 3s ease;
     }
 
     .hearts {
@@ -66,21 +70,19 @@
       to {opacity: 1;}
     }
 
-    @keyframes glow {
-      from {text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff1493;}
-      to {text-shadow: 0 0 25px #ff99cc, 0 0 50px #ff66b2;}
-    }
-
-    @keyframes sparkle {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    @keyframes popIn {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
     }
   </style>
 </head>
 <body>
-  <h1>🎉 Happy Birthday,Prajju ! 🎉</h1>
-  <div id="timer">⏳ Loading...</div>
+
+  <h1>🎉 Happy Birthday, Prajju! 🎉</h1>
+  <div id="timer">⏳ Loading countdown...</div>
   <p>As long as I exist, you will always be loved 💖</p>
+  <img class="photo" src="https://https://drive.google.com/file/d/1l2qDvQ-N5v3cwtgWhjnmZ9J1lpLkKg0Z/view?usp=drive_link/tC8Zx4A.png" alt="Cute cat">
+
   <div class="hearts" id="hearts"></div>
 
   <!-- YouTube Music -->
@@ -103,8 +105,8 @@
     }
     setInterval(createHeart, 300);
 
-    // Countdown timer (edit your date here)
-    const countdownDate = new Date("Oct 25, 2025 00:00:00").getTime();
+    // Countdown timer (change this date)
+    const countdownDate = new Date("Oct 24, 2025 00:00:00").getTime();
     const timerElement = document.getElementById("timer");
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -112,7 +114,6 @@
       if (distance < 0) {
         clearInterval(timer);
         timerElement.innerHTML = "🎂 It's your special day, Kanna! 🎂";
-        document.body.style.background = "linear-gradient(135deg, #ffb3d9, #ffe6f2)";
       } else {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -122,5 +123,6 @@
       }
     }, 1000);
   </script>
+
 </body>
 </html>
